@@ -1,14 +1,12 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, LogBox } from 'react-native'
 import React from 'react'
 import * as WebBrowser from "expo-web-browser";
 import LottieView from 'lottie-react-native';
 import colors from '../utils/colors';
-import { useWarmUpBrowser } from '../../hooks/useWarmUpBrowser';
 import { useOAuth } from '@clerk/clerk-expo';
 
 WebBrowser.maybeCompleteAuthSession();
 const GetStarted = () => {
-    useWarmUpBrowser();
     const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
     const onPress = async () => {
         try {
@@ -27,7 +25,12 @@ const GetStarted = () => {
     return (
         <>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-
+                <LottieView
+                    source={require('../assets/Lottie/demo.json')}
+                    style={{ width: '100%' }}
+                    autoPlay
+                    loop
+                />
             </View>
             <View style={{ flex: 1.2, backgroundColor: 'lightgreen', borderTopLeftRadius: 50, borderTopRightRadius: 50, padding: 40 }}>
                 <View>
